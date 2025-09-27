@@ -9,7 +9,7 @@ import Stage4 from './components/stages/Stage4';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Navigation />
       <main className="relative">
         <Stage1 />
