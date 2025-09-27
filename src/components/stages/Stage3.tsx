@@ -1,28 +1,31 @@
-import React from 'react';
-import { Flower } from '@phosphor-icons/react';
+import React from "react";
+import bloom from "../../assets/bloom.png";
 
 const projects = [
   {
-    title: 'Project One',
-    challenge: 'The challenge was to...',
-    approach: 'My approach involved...',
-    outcome: 'The outcome was...',
-    reflection: 'I learned that...',
+    title: "Project One",
+    challenge: "The challenge was to...",
+    approach: "My approach involved...",
+    outcome: "The outcome was...",
+    reflection: "I learned that...",
   },
   {
-    title: 'Project Two',
-    challenge: 'The challenge was to...',
-    approach: 'My approach involved...',
-    outcome: 'The outcome was...',
-    reflection: 'I learned that...',
+    title: "Project Two",
+    challenge: "The challenge was to...",
+    approach: "My approach involved...",
+    outcome: "The outcome was...",
+    reflection: "I learned that...",
   },
 ];
 
 const Stage3 = () => {
   return (
-    <section id="stage3" className="min-h-screen flex flex-col justify-center items-center">
+    <section
+      id="stage3"
+      className="min-h-screen flex flex-col justify-center items-center"
+    >
       <div className="text-center">
-        <Flower size={64} className="mx-auto mb-4" />
+        <img src={bloom} alt="bloom" className="h-40 mx-auto mb-4" />{" "}
         <h2 className="text-3xl font-bold mb-2">Leaf Growth & Flowering</h2>
         <p className="text-lg text-gray-600">My Projects</p>
       </div>
