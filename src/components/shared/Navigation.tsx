@@ -1,14 +1,14 @@
-﻿import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { CoffeeBeanIcon, Leaf, Flower, Plant } from '@phosphor-icons/react';
+﻿import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { CoffeeBeanIcon, Leaf, Flower, Plant } from "@phosphor-icons/react";
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState(0);
   const sections = [
-    { id: 'stage1', label: 'Seeds', icon: CoffeeBeanIcon },
-    { id: 'stage2', label: 'Sprouting', icon: Leaf },
-    { id: 'stage3', label: 'Flowering', icon: Flower },
-    { id: 'stage4', label: 'Pods', icon: Plant },
+    { id: "stage1", label: "Hi!", icon: CoffeeBeanIcon },
+    { id: "stage2", label: "Motivations", icon: Leaf },
+    { id: "stage3", label: "Experience", icon: Flower },
+    { id: "stage4", label: "Skills", icon: Plant },
   ];
 
   useEffect(() => {
@@ -19,14 +19,14 @@ const Navigation = () => {
       setActiveSection(Math.min(sectionIndex, sections.length - 1));
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [sections.length]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 

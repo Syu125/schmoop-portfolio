@@ -24,10 +24,8 @@ const Stage4 = () => {
     >
       <div className="text-center">
         <img src={seeds} alt="seeds" className="h-40 mx-auto mb-4" />
-        <h2 className="text-3xl font-bold mb-2">
-          Pod Fills & Seed Pods Mature
-        </h2>
-        <p className="text-lg text-gray-600">My Skills & Hobbies</p>
+        <h2 className="text-3xl font-bold mb-2">My Skills & Hobbies</h2>
+        <p className="text-lg text-gray-600">The Pods</p>
       </div>
       <div className="mt-8 max-w-4xl w-full px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -13,8 +13,8 @@ const Stage2 = () => {
           alt="germination"
           className="h-40 mx-auto mb-4"
         />
-        <h2 className="text-3xl font-bold mb-2">Germination & Sprouting</h2>
-        <p className="text-lg text-gray-600">My Passions & Motivations</p>
+        <h2 className="text-3xl font-bold mb-2">My Passions & Motivations</h2>
+        <p className="text-lg text-gray-600">Sprouting</p>
       </div>
       <div className="mt-8 max-w-2xl text-center">
         <p className="mb-4">

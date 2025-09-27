@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import flower from "../../assets/bloom.png";
+import flower from "../../assets/flower.png";
+import { motion, AnimatePresence } from "framer-motion";
 
 const projects = [
   {
@@ -82,10 +83,8 @@ const projects = [
   },
 ];
 
-type Project = (typeof projects)[number];
-
 const Stage3 = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   return (
     <section
@@ -94,14 +93,14 @@ const Stage3 = () => {
     >
       <div className="text-center">
         <img src={flower} alt="flower" className="h-40 mx-auto mb-4" />{" "}
-        <h2 className="text-3xl font-bold mb-2">Leaf Growth & Flowering</h2>
-        <p className="text-lg text-gray-600">My Projects</p>
+        <h2 className="text-3xl font-bold mb-2">My Work</h2>
+        <p className="text-lg text-gray-600">Blooming</p>
       </div>
       <div className="mt-8 max-w-4xl w-full px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="mb-8 p-6 border rounded-lg shadow-lg bg-white cursor-pointer hover:shadow-xl transition-shadow duration-200"
+            className="mb-8 p-6 border border-accent-orange rounded-lg shadow-lg bg-white cursor-pointer hover:shadow-xl transition-shadow duration-200"
             onClick={() => setSelectedProject(project)}
           >
             <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
@@ -109,61 +108,74 @@ const Stage3 = () => {
             <p className="text-gray-700 line-clamp-3">
               {project.sections[0].narrative}
             </p>
-            <button className="mt-4 text-blue-500 hover:underline">
+            <button className="mt-4 text-accent-orange hover:underline">
               Read More
             </button>
           </div>
         ))}
       </div>
 
-      {selectedProject && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-8 rounded-lg shadow-lg max-w-3xl max-h-[90vh] overflow-y-auto relative">
-            <button
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-xl"
-              onClick={() => setSelectedProject(null)}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+            onClick={() => setSelectedProject(null)} // Close when clicking outside
+          >
+            <div
+              className="bg-white p-8 rounded-lg shadow-lg max-w-3xl max-h-[90vh] overflow-y-auto relative"
+              onClick={(e) => e.stopPropagation()} // Prevent click from propagating to background
             >
-              &times;
-            </button>
-            <h3 className="text-3xl font-bold mb-2">{selectedProject.title}</h3>
-            <p className="text-xl text-gray-600 mb-4">
-              {selectedProject.subtitle}
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm mb-8">
-              <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
-                Role: {selectedProject.role}
-              </span>
-              <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full">
-                Timeline: {selectedProject.timeline}
-              </span>
-              <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full">
-                Tools: {selectedProject.tools}
-              </span>
-              <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">
-                Team: {selectedProject.team}
-              </span>
-            </div>
-
-            {selectedProject.sections.map((section, secIndex) => (
-              <div key={secIndex} className="mb-8">
-                <h4 className="text-2xl font-bold mb-4 border-b pb-2">
-                  {section.title}
-                </h4>
-                <p className="text-gray-700 mb-4">{section.narrative}</p>
-                {section.visual && (
-                  <div className="flex justify-center mt-4">
-                    <img
-                      src={`/src/assets/${section.visual}`}
-                      alt={section.title}
-                      className="max-w-full h-auto rounded-lg shadow-md"
-                    />
-                  </div>
-                )}
+              <button
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-xl"
+                onClick={() => setSelectedProject(null)}
+              >
+                &times;
+              </button>
+              <h3 className="text-3xl font-bold mb-2">
+                {selectedProject.title}
+              </h3>
+              <p className="text-xl text-gray-600 mb-4">
+                {selectedProject.subtitle}
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 text-sm mb-8">
+                <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+                  Role: {selectedProject.role}
+                </span>
+                <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full">
+                  Timeline: {selectedProject.timeline}
+                </span>
+                <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full">
+                  Tools: {selectedProject.tools}
+                </span>
+                <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">
+                  Team: {selectedProject.team}
+                </span>
               </div>
-            ))}
-          </div>
-        </div>
-      )}
+
+              {selectedProject.sections.map((section, secIndex) => (
+                <div key={secIndex} className="mb-8">
+                  <h4 className="text-2xl font-bold mb-4 border-b pb-2">
+                    {section.title}
+                  </h4>
+                  <p className="text-gray-700 mb-4">{section.narrative}</p>
+                  {section.visual && (
+                    <div className="flex justify-center mt-4">
+                      <img
+                        src={`/src/assets/${section.visual}`}
+                        alt={section.title}
+                        className="max-w-full h-auto rounded-lg shadow-md"
+                      />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
