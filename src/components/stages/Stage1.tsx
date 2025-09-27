@@ -1,5 +1,5 @@
 import React from "react";
-import { CoffeeBeanIcon } from "@phosphor-icons/react";
+import seed from "../../assets/seed.png";
 
 const Stage1 = () => {
   return (
@@ -8,10 +8,10 @@ const Stage1 = () => {
       className="min-h-screen flex flex-col justify-center items-center"
     >
       <div className="text-center">
-        <CoffeeBeanIcon size={64} className="mx-auto mb-4" />
+        <img src={seed} alt="seed" className="w-20 mx-auto mb-4" />
         <h1 className="text-4xl font-bold mb-2">Hi, I'm Sophia</h1>
         <p className="text-lg text-gray-600">
-          Grounded in Computer Science, growing in human-centered design.
+          Grounded in Computer Science, growing in Human-Centered Design.
         </p>
       </div>
       <div className="mt-8 max-w-2xl text-center">
