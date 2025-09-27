@@ -18,12 +18,29 @@ const Stage1 = () => {
         <p className="mb-4">
           Currently, I am a Master’s student in Computer Science at UC San
           Diego, specializing in Human–Computer Interaction and design. I work
-          with the Digital Health Lab on AI-assisted medical decision-making and
-          the Laboratory for Emerging Intelligence on designing interfaces for
-          AI-powered learning tools. These experiences fuel my passion for user
-          experience, health-tech, and the transformative potential of AI in
-          healthcare. My goal is to design interactions that are not only
-          functional, but also meaningful and impactful.
+          with the{" "}
+          <a
+            href="https://digihealth.ucsd.edu/home"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-health-500 hover:underline"
+          >
+            DigiHealth Lab
+          </a>{" "}
+          on AI-assisted medical decision-making and the{" "}
+          <a
+            href="https://lei.ucsd.edu/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-health-500 hover:underline"
+          >
+            Laboratory for Emerging Intelligence
+          </a>{" "}
+          on designing interfaces for AI-powered learning tools. These
+          experiences fuel my passion for user experience, health-tech, and the
+          transformative potential of AI in healthcare. My goal is to design
+          interactions that are not only functional, but also meaningful and
+          impactful.
         </p>
         <div className="flex flex-wrap justify-center gap-2 mt-4">
           <span className="bg-health-100 text-health-900 text-sm font-medium font-bold mr-2 px-2.5 py-0.5 rounded-full">
