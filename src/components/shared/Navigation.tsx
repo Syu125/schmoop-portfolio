@@ -1,14 +1,18 @@
-﻿import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { CoffeeBeanIcon, Leaf, Flower, Plant } from "@phosphor-icons/react";
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Circle, Leaf, Flower, Plant } from '@phosphor-icons/react';
 
-const Navigation = () => {
-  const [activeSection, setActiveSection] = useState(0);
+interface NavigationProps {
+  activeSection: number;
+  setActiveSection: (index: number) => void;
+}
+
+const Navigation: React.FC<NavigationProps> = ({ activeSection, setActiveSection }) => {
   const sections = [
-    { id: "stage1", label: "Hi!", icon: CoffeeBeanIcon },
-    { id: "stage2", label: "Motivations", icon: Leaf },
-    { id: "stage3", label: "Experience", icon: Flower },
-    { id: "stage4", label: "Skills", icon: Plant },
+    { id: 'stage1', label: 'Seeds', icon: Circle },
+    { id: 'stage2', label: 'Sprouting', icon: Leaf },
+    { id: 'stage3', label: 'Flowering', icon: Flower },
+    { id: 'stage4', label: 'Pods', icon: Plant },
   ];
 
   useEffect(() => {
@@ -19,9 +23,9 @@ const Navigation = () => {
       setActiveSection(Math.min(sectionIndex, sections.length - 1));
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [sections.length]);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [sections.length, setActiveSection]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
