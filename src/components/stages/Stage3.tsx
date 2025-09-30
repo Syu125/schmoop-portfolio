@@ -2,7 +2,22 @@ import React, { useState } from "react";
 import flower from "../../assets/flower.png";
 import { motion, AnimatePresence } from "framer-motion";
 
-const projects = [
+interface Project {
+  title: string;
+  subtitle: string;
+  role: string;
+  timeline: string;
+  tools: string;
+  team: string;
+  sections: {
+    type: string;
+    title: string;
+    narrative: string;
+    visual: string;
+  }[];
+}
+
+const projects: Project[] = [
   {
     title: "TriageMD",
     subtitle: "AI-Assisted Medical Self-Triage System",
@@ -81,10 +96,86 @@ const projects = [
       },
     ],
   },
+  {
+    title: "Private Event Ride Coordination Tool",
+    subtitle: "Web App for Optimized Transportation Matching",
+    role: "Lead Developer / Designer",
+    timeline: "Spring 2025 – Present",
+    tools: "MERN stack, vehicle routing optimization, mapping APIs, UX design",
+    team: "Independent project",
+    sections: [
+      {
+        type: "context",
+        title: "Context & Problem",
+        narrative:
+          "Large private events often need to move guests between locations but end up using spreadsheets or ad-hoc messaging. Existing ridesharing apps don’t allow controlled, invite-only pooling. Personal spark: During undergrad, I served as an admin for a student organization and was responsible for arranging transportation to off-campus events. Organizing rides manually was tedious and time-consuming for our team, which inspired me to design a more efficient system. Opportunity: create a tool that makes private group transportation simple and efficient without exposing guest data publicly. Challenge: building an optimization engine and an interface that non-technical event organizers can easily use.",
+        visual: "slh-context.png", // Placeholder
+      },
+      {
+        type: "process",
+        title: "Process",
+        narrative:
+          "Scoped a minimal viable product where participants join an event and input travel details. Implemented a vehicle routing algorithm to match passengers with available drivers and generate efficient pickup sequences. Integrated mapping APIs for travel times and directions. Developed a responsive web interface to display assignments securely. Performed iterative testing with synthetic event data to refine algorithms and UI.",
+        visual: "slh-process.png", // Placeholder
+      },
+      {
+        type: "outcome",
+        title: "Solution & Outcome",
+        narrative:
+          "Early prototype demonstrates successful automated ride assignments in simulated events. Established a framework for combining routing optimization with a privacy-focused UX. Preparing for limited pilot testing before public release.",
+        visual: "slh-outcome.png", // Placeholder
+      },
+      {
+        type: "reflection",
+        title: "Reflection",
+        narrative:
+          "Key learnings: Translating complex routing algorithms into a usable interface. Balancing optimization, privacy, and simplicity. Designing in a confidential setting while still practicing user-centered methods. This project grew directly from my own experience as a student-organization admin, which gave me firsthand insight into the logistical challenges of ride coordination. Future directions: Integrate with external event platforms. Conduct usability studies with real organizers. Explore native mobile implementation.",
+        visual: "slh-reflection.png", // Placeholder
+      },
+    ],
+  },
+  {
+    title: "AI Course Assistant",
+    subtitle: "Interactive Dashboard for Students & Professors in LIGN 167",
+    role: "Student Developer / Designer (Course Project – LIGN 167)",
+    timeline: "Winter 2025",
+    tools: "Python, React, GPT-based chat integration, prompt engineering, dashboard UI design",
+    team: "Independent project",
+    sections: [
+      {
+        type: "context",
+        title: "Context & Problem",
+        narrative:
+          "Students in LIGN 167 (Language & Cognition) often struggle to consolidate lecture material and apply it to assignments. Professors have limited time to create individualized study aids or answer repetitive questions. Existing course platforms (Canvas, PDFs) are static and offer little interactive support. Opportunity: create an AI-powered course assistant with separate student and professor dashboards. Challenge: aligning GPT-generated responses with course-approved content while providing a seamless UX.",
+        visual: "slh-context.png", // Placeholder
+      },
+      {
+        type: "process",
+        title: "Process",
+        narrative:
+          "Defined two user types: Students: Receive unique study guides. Chat with lecture transcripts using GPT to clarify concepts. Professors: Manage what content students can access. Upload or update lecture materials. Implemented GPT-based chat restricted to course transcripts. Built a dashboard interface (React frontend + Python backend) for both students and professors. Developed content-management controls so instructors can gate or approve materials. Conducted informal testing with sample lecture data to ensure accuracy and usability.",
+        visual: "slh-process.png", // Placeholder
+      },
+      {
+        type: "outcome",
+        title: "Solution & Outcome",
+        narrative:
+          "Delivered a working prototype of an AI Course Assistant for LIGN 167. Students could interactively query lecture transcripts and generate tailored study guides. Professors could control content visibility and maintain alignment with the syllabus. Demonstrated the app at the final project showcase, receiving positive feedback for its dual-dashboard design.",
+        visual: "slh-outcome.png", // Placeholder
+      },
+      {
+        type: "reflection",
+        title: "Reflection",
+        narrative:
+          "Key learnings: Designing for two distinct user groups (students vs. professors). Prompt engineering to confine GPT responses to approved material. Building dashboards that balance autonomy (student self-study) with oversight (professor control). Future directions: Integrate analytics to track common student questions. Add quiz generation from transcripts. Conduct a formal usability study to measure learning outcomes.",
+        visual: "slh-reflection.png", // Placeholder
+      },
+    ],
+  },
 ];
 
 const Stage3 = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
     <section
